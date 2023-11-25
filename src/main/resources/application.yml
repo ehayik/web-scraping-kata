@@ -1,0 +1,12 @@
+
+web-scrapping:
+  scrapeme-shop:
+      url: https://scrapeme.live/shop/
+
+logging:
+  level:
+    org:
+      github:
+        ehayik:
+            kata:
+              webscrapping: DEBUG
