@@ -1,4 +1,5 @@
 
+
 web-scrapping:
   scrapeme-shop:
       url: https://scrapeme.live/shop/
@@ -10,3 +11,6 @@ logging:
         ehayik:
             kata:
               webscrapping: DEBUG
+spring:
+  profiles:
+    default: container

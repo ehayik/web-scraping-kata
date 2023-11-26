@@ -17,7 +17,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 @Slf4j
 public class ScrapemeShopPage implements AutoCloseable {
 
-    private  static final String PAGE_TITLE = "Products – ScrapeMe";
+    private static final String PAGE_TITLE = "Products – ScrapeMe";
 
     private final String url;
     private final WebDriver driver;
@@ -41,8 +41,8 @@ public class ScrapemeShopPage implements AutoCloseable {
     private void ensureThatPageIsLocated() {
 
         if (!PAGE_TITLE.equals(driver.getTitle())) {
-            throw new IllegalStateException("This is not ScrapeMe Shop page," +
-                    " current page is: " + driver.getCurrentUrl());
+            throw new IllegalStateException(
+                    "This is not ScrapeMe Shop page," + " current page is: " + driver.getCurrentUrl());
         }
     }
 

@@ -12,7 +12,7 @@
 
     <groupId>org.github.ehayik.kata.webscrapping</groupId>
     <artifactId>web-scrapping-kata</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <description>web-scrapping-kata</description>
 
     <properties>
@@ -89,6 +89,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
