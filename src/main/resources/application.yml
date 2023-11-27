@@ -11,7 +11,7 @@ web-driver:
   pool:
     min-idle: 3
     max-idle: 6
-    max-total: 12
+    max-total: 20
 
 logging:
   level:
@@ -19,4 +19,5 @@ logging:
       github:
         ehayik:
             kata:
-              webscrapping: DEBUG
+              webscrapping:
+                infrastructure: DEBUG

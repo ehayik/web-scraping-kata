@@ -13,6 +13,7 @@ import java.util.List;
 import static java.time.Duration.ofSeconds;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
+// page_url = https://scrapeme.live/shop/
 @Slf4j
 public class ScrapemeShopPage implements AutoCloseable {
 
