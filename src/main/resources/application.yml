@@ -1,8 +1,17 @@
 
+spring:
+  profiles:
+    default: container
 
 web-scrapping:
   scrapeme-shop:
       url: https://scrapeme.live/shop/
+
+web-driver:
+  pool:
+    min-idle: 3
+    max-idle: 6
+    max-total: 12
 
 logging:
   level:
@@ -11,6 +20,3 @@ logging:
         ehayik:
             kata:
               webscrapping: DEBUG
-spring:
-  profiles:
-    default: container
