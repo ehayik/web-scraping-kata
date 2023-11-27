@@ -29,11 +29,8 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 - Maven
 - Docker
 
-{% note %}
-
-**Note:** Chrome browser compatible with latest Selenium _ChromeDriver_ version is required, to run standalone.
-
-{% endnote %}
+> **Note:** 
+> Chrome browser compatible with latest Selenium _ChromeDriver_ version is required, to run standalone.
 
 ### Installing
 
@@ -45,12 +42,8 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 
 1.Run `mvn spring-boot:run -Dspring-boot.run.profiles=standalone`
 
-{% note %}
-
-**Note:** The web scrapper will use the _Chrome_ browser installed in your machine, and 
-          latest _ChromeDriver_ version will be downloaded.
-
-{% endnote %}
+> **Note:** 
+> The web scrapper will use the _Chrome_ browser installed in your machine, and latest _ChromeDriver_ version will be downloaded.
 
 ### Running container
 
@@ -58,12 +51,8 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 2. Run `docker build -t web-scrapping-kata:0.0.1 .`  to build your Docker image.
 3. Run `docker run -d -p 8080:8080 --name web-scrapping-kata  web-scrapping-kata:0.0.1` to run it.
 
-{% note %}
-
-**Note:** The web scrapper will use the _Firefox_ browser installed in your container, and
-latest _Gecko Driver_ version will be downloaded.
-
-{% endnote %}
+> **Note:** 
+> The web scrapper will use the _Firefox_ browser installed in your container, and latest _Gecko Driver_ version will be downloaded.
 
 ### Usage
 
