@@ -3,6 +3,13 @@ package org.github.ehayik.kata.webscrapping.infrastructure.driverpool;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * Properties for configuring the WebDriver pool.
+ *
+ * <p>
+ * It is annotated with @Data and @ConfigurationProperties to enable automatic
+ * mapping of properties from the application configuration file.
+ */
 @Data
 @ConfigurationProperties("web-driver.pool")
 class WebDriverPoolProperties {
