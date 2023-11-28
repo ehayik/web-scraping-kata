@@ -40,7 +40,7 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 
 ### Running standalone
 
-1.Run `mvn spring-boot:run -Dspring-boot.run.profiles=standalone`
+1. Run `mvn spring-boot:run -Dspring-boot.run.profiles=standalone`
 
 > **Note:** 
 > The web scrapper will use the _Chrome_ browser installed in your machine, and latest _ChromeDriver_ version will be downloaded.
