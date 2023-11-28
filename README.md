@@ -1,5 +1,7 @@
 ## Web Scrapping Kata
 
+This project illustrates Web Scrapping challenges and concepts using Selenium, Spring Boot & Docker.
+
 ## Description
 
 Web scraping is a technique used to extract large amounts of data from websites whereby the data is
