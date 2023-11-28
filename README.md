@@ -38,7 +38,7 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 2. Open the project folder.
 3. Run `mvn clean compile` to install the necessary dependencies from the POM file.
 
-## Running standalone
+### Running standalone
 
 1.Run `mvn spring-boot:run -Dspring-boot.run.profiles=standalone`
 
