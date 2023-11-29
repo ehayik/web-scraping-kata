@@ -17,7 +17,6 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 
 - Set up a Selenium web scrapping java.
 - Set up web scrapping service docker image using _Firefox_, _GeckoDriver_, and [Spring Boot layered Jar](https://www.baeldung.com/spring-boot-docker-images#layered-jars).
-- Automate WebDriver management using [WebDriverManager](https://github.com/bonigarcia/webdrivermanager).
 - Manage WebDriver instances in a multi-threaded environment.
 - Implement WebDriver pooling manager using Apache Common pool.
 - Implement Page Object Pattern.
@@ -40,12 +39,12 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 2. Open the project folder.
 3. Run `mvn clean compile` to install the necessary dependencies from the POM file.
 
-### Running standalone
+### Running locally
 
-1. Run `mvn spring-boot:run -Dspring-boot.run.profiles=standalone`
+1. Run `mvn spring-boot:run`
 
 > **Note:** 
-> The web scrapper will use the _Chrome_ browser installed in your machine, and latest _ChromeDriver_ version will be downloaded.
+> The web scrapper will use the _Firefox_ browser installed in your machine, and latest _Gecko Driver_ version will be downloaded.
 
 ### Running container
 

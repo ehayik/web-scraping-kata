@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
-import org.springframework.context.annotation.Profile;
 
 import static org.springframework.jmx.support.RegistrationPolicy.IGNORE_EXISTING;
 
@@ -32,24 +31,17 @@ class WebDriverPoolConfig {
         return new GenericObjectPool<>(driverFactory, poolConfig);
     }
 
-    @Configuration
-    @Profile("standalone")
-    static class PooledChromeDriverConfig {
-
-        @Bean
-        PooledObjectFactory<WebDriver> webDriverFactory(WebDriverProperties properties) {
-            return new PooledWebDriverFactory(new ChromeWebDriverFactory(), properties);
-        }
+    @Bean
+    PooledObjectFactory<WebDriver> pooledObjectFactory(WebDriverProperties properties, WebDriverFactory webDriverFactory) {
+        return new PooledWebDriverFactory(webDriverFactory, properties);
     }
 
-    @Configuration
-    @Profile("container")
-    static class PooledFirefoxDriverConfig {
-
-        @Bean
-        PooledObjectFactory<WebDriver> webDriverFactory(WebDriverProperties properties) {
-            return new PooledWebDriverFactory(new FirefoxWebDriverFactory(), properties);
-        }
+    @Bean
+    WebDriverFactory webDriverFactory(WebDriverProperties properties) {
+        return switch (properties.getBrowser()) {
+            case CHROME -> new ChromeWebDriverFactory();
+            case FIREFOX -> new FirefoxWebDriverFactory();
+        };
     }
 }
 
