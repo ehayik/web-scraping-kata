@@ -22,12 +22,18 @@ import org.openqa.selenium.WebDriver;
  */
 @Slf4j
 @RequiredArgsConstructor
-class PooledWebDriverFactory extends BasePooledObjectFactory<WebDriver> implements WebDriverFactory {
+class PooledWebDriverFactory extends BasePooledObjectFactory<WebDriver> {
 
     private final WebDriverFactory delegate;
+    private final WebDriverProperties properties;
 
     @Override
     public WebDriver create() {
+
+        if (properties.isRemoteEnabled()) {
+            return delegate.create(properties.getRemoteAddress());
+        }
+
         return delegate.create();
     }
 

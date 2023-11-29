@@ -1,1 +1,28 @@
+networks:
+  web-scrapping-kata:
+    external: true
+    driver:  bridge
+
 services:
+   selenium-chrome:
+     image: 'selenium/standalone-chrome:4.15.0-20231128'
+     privileged: true
+     shm_size: '2g'
+     volumes:
+       - /dev/shm:/dev/shm
+     networks:
+       - web-scrapping-kata
+     ports:
+       - '4444:4444'
+       - '7900:7900'
+#   selenium-firefox:
+#     image: 'selenium/standalone-firefox:4.15.0-20231128'
+#     shm_size: '2g'
+#     privileged: true
+#     volumes:
+#       - /dev/shm:/dev/shm
+#     networks:
+#       - web-scrapping-kata
+#     ports:
+#       - '4444:4444'
+#       - '7900:7900'

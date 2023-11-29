@@ -4,7 +4,7 @@ import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.openqa.selenium.WebDriver;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Profile;
 import static org.springframework.jmx.support.RegistrationPolicy.IGNORE_EXISTING;
 
 @Configuration
+@ConfigurationPropertiesScan
 @EnableMBeanExport(registration = IGNORE_EXISTING)
-@EnableConfigurationProperties(WebDriverPoolProperties.class)
 class WebDriverPoolConfig {
 
     @Bean
@@ -37,8 +37,8 @@ class WebDriverPoolConfig {
     static class PooledChromeDriverConfig {
 
         @Bean
-        PooledObjectFactory<WebDriver> webDriverFactory() {
-            return new PooledWebDriverFactory(new ChromeWebDriverFactory());
+        PooledObjectFactory<WebDriver> webDriverFactory(WebDriverProperties properties) {
+            return new PooledWebDriverFactory(new ChromeWebDriverFactory(), properties);
         }
     }
 
@@ -47,8 +47,8 @@ class WebDriverPoolConfig {
     static class PooledFirefoxDriverConfig {
 
         @Bean
-        PooledObjectFactory<WebDriver> webDriverFactory() {
-            return new PooledWebDriverFactory(new FirefoxWebDriverFactory());
+        PooledObjectFactory<WebDriver> webDriverFactory(WebDriverProperties properties) {
+            return new PooledWebDriverFactory(new FirefoxWebDriverFactory(), properties);
         }
     }
 }

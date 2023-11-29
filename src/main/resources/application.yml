@@ -12,6 +12,8 @@ web-driver:
     min-idle: 3
     max-idle: 6
     max-total: 20
+  remote-enabled: false
+  remote-address: http://localhost:4444
 
 logging:
   level:
