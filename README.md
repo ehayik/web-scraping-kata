@@ -13,9 +13,11 @@ Here is how a typical web scraping process works:
 
 This project illustrates Web scraping challenges and concepts, showing how to:
 
-- Set up a Selenium web scraping java using _Chrome_ or _Firefox_ WebDriver.
-- Set up web scraping service docker image using _Firefox_ WebDriver, and [Spring Boot layered Jar](https://www.baeldung.com/spring-boot-docker-images#layered-jars).
-- Set up _RemoteWebDriver_ using selenium standalone docker images and [Spring Docker Compose support](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1)
+- Set up a Selenium web scraping project using Spring Boot.
+- Set up a web scraping service docker image using _Firefox_ WebDriver and [Spring Boot layered Jar](https://www.baeldung.com/spring-boot-docker-images#layered-jars).
+- Set up Selenium standalone docker images using [spring docker compose](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1), to run scraping jobs which 
+  significantly improves the isolation and manageability of web scraping tasks.
+- Support multiple browsers.
 - Manage WebDriver instances in a multi-threaded environment.
 - Implement WebDriver pooling manager using Apache Common pool.
 - Implement Page Object Pattern.
@@ -68,6 +70,14 @@ Feel free to explore the project and suggest any improvements.
 > The `--web-driver.browser=chrome` part is the actual argument being passed, where we are setting 
 > the `web-driver.browser` property to _chrome_. Please replace chrome with the browser you want the _WebDriver_ to use.
 > Supported browsers are, _chrome_ and _firefox_
+
+### Running locally with Selenium standalone docker images
+
+1. Run `mvn spring-boot:run -Dspring-boot.run.profiles=<browser>-remote`
+
+>**Note**:
+> Replace `<broswer>` with a supported browser, `chrome` or `firefox`.
+> Spring docker compose will deploy a Selenium standalone docker image, ready to use.
 
 ### Running container
 
