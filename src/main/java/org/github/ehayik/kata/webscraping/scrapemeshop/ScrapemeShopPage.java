@@ -1,8 +1,8 @@
-package org.github.ehayik.kata.webscrapping.scrapemeshop;
+package org.github.ehayik.kata.webscraping.scrapemeshop;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.github.ehayik.kata.webscrapping.infrastructure.driverpool.PooledWebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

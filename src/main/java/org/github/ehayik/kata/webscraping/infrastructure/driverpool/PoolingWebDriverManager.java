@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.pool2.impl.GenericObjectPool;

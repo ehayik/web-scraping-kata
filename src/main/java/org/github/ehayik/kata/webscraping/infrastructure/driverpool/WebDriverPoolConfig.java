@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;

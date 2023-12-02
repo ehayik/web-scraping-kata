@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping.scrapemeshop;
+package org.github.ehayik.kata.webscraping.scrapemeshop;
 
 import com.google.common.base.Stopwatch;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ class ScrapemeShopController {
             log.info("Scrapeme Shop scrapped successfully after {}s. Products found {}", stopwatch.elapsed().toSeconds(), products.size());
             return products;
         } catch (Exception ex) {
-            log.error("Scrapeme Shop scrapping failed after {}s.", stopwatch.elapsed().toSeconds(), ex);
+            log.error("Scrapeme Shop scraping failed after {}s.", stopwatch.elapsed().toSeconds(), ex);
             throw ex;
         }
     }

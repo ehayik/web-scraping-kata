@@ -10,10 +10,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.github.ehayik.kata.webscrapping</groupId>
-    <artifactId>web-scrapping-kata</artifactId>
+    <groupId>org.github.ehayik.kata.webscraping</groupId>
+    <artifactId>web-scraping-kata</artifactId>
     <version>0.0.1</version>
-    <description>web-scrapping-kata</description>
+
+    <description>
+        This Project illustrates Web Scraping challenges and concepts using Selenium, Spring Boot &amp; Docker
+    </description>
 
     <properties>
         <java.version>17</java.version>

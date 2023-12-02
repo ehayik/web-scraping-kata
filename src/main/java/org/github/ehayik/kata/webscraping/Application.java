@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping;
+package org.github.ehayik.kata.webscraping;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping.scrapemeshop;
+package org.github.ehayik.kata.webscraping.scrapemeshop;
 
 import lombok.Builder;
 

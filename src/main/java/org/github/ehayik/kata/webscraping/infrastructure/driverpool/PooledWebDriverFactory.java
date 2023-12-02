@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscrapping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 /**
  * Responsible for creating and managing a pool of WebDriver instances.
- *
+ * <p>
  * The PooledWebDriverFactory class has the following responsibilities:
  * <ul>
  *     <li>Creating a WebDriver instance using the delegate WebDriverFactory.</li>

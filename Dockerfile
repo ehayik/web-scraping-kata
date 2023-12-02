@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17 AS builder
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} web-scrapping-kata-0.0.1.jar
-RUN java -Djarmode=layertools -jar web-scrapping-kata-0.0.1.jar extract
+COPY ${JAR_FILE} web-scraping-kata-0.0.1.jar
+RUN java -Djarmode=layertools -jar web-scraping-kata-0.0.1.jar extract
 
 FROM eclipse-temurin:17-focal
 LABEL authors="github.com/ehayik"
