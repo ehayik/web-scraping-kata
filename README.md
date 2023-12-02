@@ -1,6 +1,4 @@
-## Web Scrapping Kata
-
-This project illustrates Web Scrapping challenges and concepts using Selenium, Spring Boot & Docker.
+## Web scraping Kata
 
 ## Description
 
@@ -13,13 +11,39 @@ Here is how a typical web scraping process works:
 3. The web scraper then parses the HTML content of the page, filters out the data it needs,
    and saves this data into a format you want.
 
-This project illustrates Web Scrapping challenges and concepts, showing how to:
+This project illustrates Web scraping challenges and concepts, showing how to:
 
-- Set up a Selenium web scrapping java.
-- Set up web scrapping service docker image using _Firefox_, _GeckoDriver_, and [Spring Boot layered Jar](https://www.baeldung.com/spring-boot-docker-images#layered-jars).
+- Set up a Selenium web scraping project using Spring Boot.
+- Set up a web scraping service docker image using _Firefox_ WebDriver and [Spring Boot layered Jar](https://www.baeldung.com/spring-boot-docker-images#layered-jars).
+- Set up Selenium standalone docker images using [spring docker compose](https://spring.io/blog/2023/06/21/docker-compose-support-in-spring-boot-3-1), to run scraping jobs which 
+  significantly improves the isolation and manageability of web scraping tasks.
+- Support multiple browsers.
 - Manage WebDriver instances in a multi-threaded environment.
 - Implement WebDriver pooling manager using Apache Common pool.
 - Implement Page Object Pattern.
+
+## Technologies Used
+
+This project uses a number of technologies and libraries:
+
+- **Java JDK 17**: The latest version of Java Development Kit is used for implementing the application logic.
+
+- **Selenium**: A web testing library used to automate browser activities.
+
+- **Spring Boot**: An open source Java-based framework used to create a Micro Service. It is developed by Pivotal Team.
+
+- **Spring MVC**: A Java framework that is used to build web applications. It follows the Model-View-Controller design pattern.
+
+- **Maven**: A software project management and comprehension tool used primarily for Java projects.
+
+- **Docker**: Docker is used to contain and manage the application and its infrastructure.
+
+- **Apache Common pool**: A library providing object-pooling definitions and has several implementations.
+
+- **Chrome / Firefox WebDriver**: Google Chrome / Mozilla Firefox Driver is a WebDriver implementation that enables programs to control 
+  Chrome / Firefox browser and use it for testing web applications.
+
+Feel free to explore the project and suggest any improvements.
 
 ## Getting Started
 
@@ -29,28 +53,37 @@ This project illustrates Web Scrapping challenges and concepts, showing how to:
 - An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
 - Maven
 - Docker
-
-> **Note:** 
-> Chrome browser compatible with latest Selenium _ChromeDriver_ version is required, to run standalone.
+- Chrome or Firefox browser, if running locally
 
 ### Installing
 
-1. Clone the repository `git clone git@github.com:ehayik/web-scrapping-kata.git`
+1. Clone the repository `git clone git@github.com:ehayik/web-scraping-kata.git`
 2. Open the project folder.
 3. Run `mvn clean compile` to install the necessary dependencies from the POM file.
 
 ### Running locally
 
-1. Run `mvn spring-boot:run`
+1. Run `mvn spring-boot:run -Dspring-boot.run.arguments="--web-driver.browser=chrome"`
 
 > **Note:** 
-> The web scrapper will use the _Firefox_ browser installed in your machine, and latest _Gecko Driver_ version will be downloaded.
+> spring-boot.run.arguments is used to pass command line arguments to the _Spring Boot_ application. 
+> The `--web-driver.browser=chrome` part is the actual argument being passed, where we are setting 
+> the `web-driver.browser` property to _chrome_. Please replace chrome with the browser you want the _WebDriver_ to use.
+> Supported browsers are, _chrome_ and _firefox_
+
+### Running locally with Selenium standalone docker images
+
+1. Run `mvn spring-boot:run -Dspring-boot.run.profiles=<browser>-remote`
+
+>**Note**:
+> Replace `<broswer>` with a supported browser, `chrome` or `firefox`.
+> Spring docker compose will deploy a Selenium standalone docker image, ready to use.
 
 ### Running container
 
 1. Run `mvn clean package` to package application in jar file.
-2. Run `docker build -t web-scrapping-kata:0.0.1 .`  to build your Docker image.
-3. Run `docker run -d -p 8080:8080 --name web-scrapping-kata  web-scrapping-kata:0.0.1` to run it.
+2. Run `docker build -t web-scraping-kata:0.0.1 .`  to build your Docker image.
+3. Run `docker run -d -p 8080:8080 --name web-scraping-kata  web-scraping-kata:0.0.1` to run it.
 
 > **Note:** 
 > The web scrapper will use the _Firefox_ browser installed in your container, and latest _Gecko Driver_ version will be downloaded.
