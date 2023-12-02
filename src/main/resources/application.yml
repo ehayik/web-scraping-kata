@@ -1,7 +1,8 @@
 
 spring:
-  profiles:
-    default: container
+  docker:
+   compose:
+     enabled: false
 
 web-scrapping:
   scrapeme-shop:
@@ -13,8 +14,6 @@ web-driver:
     max-idle: 6
     max-total: 20
   browser: FIREFOX
-  remote-enabled: false
-  remote-address: http://localhost:4444
 
 logging:
   level:

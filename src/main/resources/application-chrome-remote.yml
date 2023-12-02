@@ -1,0 +1,11 @@
+
+spring:
+  docker:
+    compose:
+      enabled: true
+      file: selenium-standalone-chrome.yml
+
+web-driver:
+  browser: CHROME
+  remote-enabled: true
+  remote-address: http://localhost:4444/wd/hub

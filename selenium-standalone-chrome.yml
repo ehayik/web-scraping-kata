@@ -1,0 +1,11 @@
+services:
+   selenium-chrome:
+     image: 'selenium/standalone-chrome:latest'
+     privileged: true
+     restart: always
+     shm_size: '2g'
+     volumes:
+       - /dev/shm:/dev/shm
+     ports:
+       - '4444:4444'
+       - '7900:7900'

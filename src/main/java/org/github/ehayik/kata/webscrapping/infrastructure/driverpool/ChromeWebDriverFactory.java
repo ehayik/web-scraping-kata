@@ -68,6 +68,6 @@ class ChromeWebDriverFactory implements WebDriverFactory {
     @Override
     public RemoteWebDriver create(@NonNull URL remoteAddress) {
         log.info("Creating new RemoteWebDriver instance with address {}.", remoteAddress);
-        return new RemoteWebDriver(remoteAddress, withOptions());
+        return new RemoteWebDriver(remoteAddress, withOptions(), true);
     }
 }
