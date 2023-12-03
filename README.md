@@ -82,11 +82,11 @@ Feel free to explore the project and suggest any improvements.
 ### Running container
 
 1. Run `mvn clean package` to package application in jar file.
-2. Run `docker build -t web-scraping-kata:0.0.1 .`  to build your Docker image.
+2. Run `docker build -f <Browser>Dockerfile -t web-scraping-kata:0.0.1 .`  to build your Docker image.
 3. Run `docker run -d -p 8080:8080 --name web-scraping-kata  web-scraping-kata:0.0.1` to run it.
 
-> **Note:** 
-> The web scrapper will use the _Firefox_ browser installed in your container, and latest _Gecko Driver_ version will be downloaded.
+>**Note**:
+> Replace `<Broswer>` with a supported browser, `Chrome` or `Firefox`.
 
 ### Usage
 

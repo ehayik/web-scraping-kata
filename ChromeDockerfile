@@ -1,0 +1,39 @@
+FROM eclipse-temurin:17 AS builder
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} web-scraping-kata-0.0.1.jar
+RUN java -Djarmode=layertools -jar web-scraping-kata-0.0.1.jar extract
+
+FROM eclipse-temurin:17-focal
+LABEL authors="github.com/ehayik"
+
+# Install wget, unzip, and gnupg
+RUN apt-get update && \
+    apt-get install -y wget unzip gnupg
+
+# Adding Chrome's official repo to sources.list
+RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google.list
+
+# Adding Google's public key for apt to verfiy the installation packages
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+# Install Google Chrome
+RUN apt-get update && \
+    apt-get install -y google-chrome-stable
+
+# Install latest ChromeDriver
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+
+# Clean up
+RUN apt autoremove -y && apt autoclean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set up the xvfb (X Virtual Framebuffer)
+ENV DISPLAY=:99
+
+COPY --from=builder dependencies/ ./
+COPY --from=builder snapshot-dependencies/ ./
+COPY --from=builder spring-boot-loader/ ./
+COPY --from=builder application/ ./
+
+ENTRYPOINT ["java", "-Dweb-driver.browser=chrome", "org.springframework.boot.loader.launch.JarLauncher"]
