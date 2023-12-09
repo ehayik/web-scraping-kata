@@ -4,7 +4,6 @@ import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.openqa.selenium.WebDriver;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.EnableMBeanExport;
 import static org.springframework.jmx.support.RegistrationPolicy.IGNORE_EXISTING;
 
 @Configuration
-@ConfigurationPropertiesScan
 @EnableMBeanExport(registration = IGNORE_EXISTING)
 class WebDriverPoolConfig {
 
@@ -27,7 +25,6 @@ class WebDriverPoolConfig {
         poolConfig.setMaxTotal(properties.getMaxTotal());
         poolConfig.setMinIdle(properties.getMinIdle());
         poolConfig.setMaxIdle(properties.getMaxIdle());
-
         return new GenericObjectPool<>(driverFactory, poolConfig);
     }
 

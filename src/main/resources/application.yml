@@ -5,8 +5,13 @@ spring:
      enabled: false
 
 web-scraping:
-  scrapeme-shop:
-      url: https://scrapeme.live/shop/
+  page:
+    scrapeme-shop:
+        url: https://scrapeme.live/shop/
+        title: "Products – ScrapeMe"
+    technical-review:
+        url: https://rta.government.bg/services/check-inspection
+        title: "Проверка за валиден периодичен технически преглед || Periodic motor vehicle inspection safety check"
 
 web-driver:
   pool:

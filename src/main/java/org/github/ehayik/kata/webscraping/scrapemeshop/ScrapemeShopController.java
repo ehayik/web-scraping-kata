@@ -4,7 +4,6 @@ import com.google.common.base.Stopwatch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,12 +11,11 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/scrapeme-shop/products")
 class ScrapemeShopController {
 
     private final ScrapemeShopPageFactory scrapemeShopPageFactory;
 
-    @GetMapping
+    @GetMapping("/scrapeme-shop/products")
     List<Product> getProducts() {
         var stopwatch = Stopwatch.createStarted();
 
