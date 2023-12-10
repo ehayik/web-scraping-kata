@@ -18,7 +18,7 @@ public class TechnicalReviewResultPage {
     private WebElement validDataFound;
 
     @FindBy(css = "div[data-bind='visible: rvIdentNumber().length != 0 && !isValid()']")
-    private WebElement invalidDataFound;
+    private WebElement expiredDataFound;
 
     @FindBy(
             css =
@@ -49,7 +49,7 @@ public class TechnicalReviewResultPage {
             return Optional.of(validTo.getText()).map(text -> LocalDate.parse(text, FORMATTER));
         }
 
-        if (invalidDataFound.isDisplayed()) {
+        if (expiredDataFound.isDisplayed()) {
             log.info("Expired on date is displayed.");
             return Optional.of(expiredOnDate.getText()).map(text -> LocalDate.parse(text, FORMATTER));
         }
