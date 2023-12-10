@@ -1,11 +1,11 @@
 package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
+import static lombok.AccessLevel.PROTECTED;
+
 import lombok.Getter;
 import lombok.NonNull;
 import org.github.ehayik.kata.webscraping.infrastructure.PageConfig;
 import org.openqa.selenium.support.PageFactory;
-
-import static lombok.AccessLevel.PROTECTED;
 
 /**
  * Represents a page object that uses a PooledWebDriver to interact with a web page.

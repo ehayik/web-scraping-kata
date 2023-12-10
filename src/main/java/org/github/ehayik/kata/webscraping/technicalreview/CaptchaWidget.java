@@ -1,5 +1,7 @@
 package org.github.ehayik.kata.webscraping.technicalreview;
 
+import java.io.File;
+import java.nio.file.Files;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.tess4j.ITesseract;
@@ -23,13 +25,27 @@ public class CaptchaWidget {
     }
 
     public String getSecurityCode() {
+        File screenshotFile = null;
+
         try {
-            var imgFile = captchaImg.getScreenshotAs(OutputType.FILE);
-            log.info("Captcha image is capture in file {}", imgFile.getAbsolutePath());
-            log.info("Recognizing captcha image characters.");
-            return tesseract.doOCR(imgFile);
+            screenshotFile = captchaImg.getScreenshotAs(OutputType.FILE);
+            log.info("Captcha image is capture in file {}", screenshotFile.getAbsolutePath());
+            log.info("Recognizing captcha screenshot characters.");
+            return tesseract.doOCR(screenshotFile);
         } catch (Exception ex) {
             throw new SecurityCodeCrackingException("Could not crack security code.", ex);
+        } finally {
+            deleteScreenshot(screenshotFile);
+        }
+    }
+
+    private static void deleteScreenshot(File screenshotFile) {
+        if (screenshotFile == null) return;
+
+        try {
+            Files.deleteIfExists(screenshotFile.toPath());
+        } catch (Exception ex) {
+            log.error("Error deleting captcha screenshot.", ex);
         }
     }
 }

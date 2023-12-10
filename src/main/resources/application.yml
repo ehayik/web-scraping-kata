@@ -20,6 +20,15 @@ web-driver:
     max-total: 20
   browser: FIREFOX
 
+resilience4j:
+   retry:
+     instances:
+       get-technical-review:
+         max-attempts: 5
+         wait-duration: 1s
+         retry-exceptions:
+           - java.lang.IllegalStateException
+
 logging:
   level:
     org:

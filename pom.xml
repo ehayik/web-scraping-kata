@@ -25,6 +25,7 @@
         <guava.version>32.1.2-jre</guava.version>
         <tess4j.version>5.9.0</tess4j.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
+        <resilience4j-spring-boot3.version>2.1.0</resilience4j-spring-boot3.version>
     </properties>
 
     <dependencies>
@@ -59,9 +60,25 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>${resilience4j-spring-boot3.version}</version>
+        </dependency>
+
 <!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-cache</artifactId>-->
+<!--            <groupId>org.springframework.retry</groupId>-->
+<!--            <artifactId>spring-retry</artifactId>-->
 <!--        </dependency>-->
 
         <dependency>

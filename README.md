@@ -21,6 +21,8 @@ This project illustrates Web scraping challenges and concepts, showing how to:
 - Manage WebDriver instances in a multi-threaded environment.
 - Implement WebDriver pooling manager using Apache Common pool.
 - Implement Page Object Pattern.
+- [Retry with Spring Boot and Resilience4j](https://reflectoring.io/retry-with-springboot-resilience4j/)
+- How to pass captcha challenge using [Tesseract and Tess4J](https://www.baeldung.com/java-ocr-tesseract)
 
 ## Technologies Used
 

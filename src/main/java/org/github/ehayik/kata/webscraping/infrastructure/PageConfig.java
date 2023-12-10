@@ -2,7 +2,6 @@ package org.github.ehayik.kata.webscraping.infrastructure;
 
 import java.util.Objects;
 
-
 /**
  * Represents the configuration of a web page.
  *

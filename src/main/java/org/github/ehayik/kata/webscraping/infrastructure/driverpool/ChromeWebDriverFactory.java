@@ -1,13 +1,12 @@
 package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
+import java.net.URL;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.URL;
 
 /**
  * A factory class for creating {@link ChromeDriver} and {@link RemoteWebDriver} instances using

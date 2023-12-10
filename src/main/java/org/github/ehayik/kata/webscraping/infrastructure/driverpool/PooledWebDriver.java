@@ -1,13 +1,12 @@
 package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
+import java.time.Duration;
+import java.util.function.Function;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.function.Function;
 
 /**
  * Represents a Pooled WebDriver instance.
@@ -76,6 +75,7 @@ public class PooledWebDriver implements AutoCloseable {
     @Override
     public void close() {
         try {
+            delegate.manage().deleteAllCookies();
             driverPool.returnDriver(delegate);
         } catch (Exception ex) {
             log.error("Could not return driver to the pool.", ex);

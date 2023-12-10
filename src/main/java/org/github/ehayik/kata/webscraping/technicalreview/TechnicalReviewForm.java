@@ -19,9 +19,11 @@ public class TechnicalReviewForm {
     @FindBy(css = "a[class='submit']")
     private WebElement submitButton;
 
+    private final WebDriver webDriver;
     private final CaptchaWidget captchaWidget;
 
-    public TechnicalReviewForm(@NonNull WebDriver webDriver, CaptchaWidget captchaWidget) {
+    public TechnicalReviewForm(@NonNull WebDriver webDriver, @NonNull CaptchaWidget captchaWidget) {
+        this.webDriver = webDriver;
         this.captchaWidget = captchaWidget;
         PageFactory.initElements(webDriver, this);
     }
@@ -32,15 +34,16 @@ public class TechnicalReviewForm {
         return this;
     }
 
-    public TechnicalReviewForm crackSecurityCode() {
+    public TechnicalReviewForm enterSecurityCode() {
         var securityCode = captchaWidget.getSecurityCode();
         log.info("Entering security code {}.", securityCode);
         securityCodeInput.sendKeys(securityCode);
         return this;
     }
 
-    public void submit() {
+    public TechnicalReviewResultPage submit() {
         log.info("Submitting form");
         submitButton.click();
+        return new TechnicalReviewResultPage(webDriver);
     }
 }
