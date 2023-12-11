@@ -4,7 +4,7 @@ import static java.time.Duration.ofSeconds;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import java.util.List;
-import org.github.ehayik.kata.webscraping.infrastructure.PageConfig;
+import org.github.ehayik.kata.webscraping.commons.PageConfig;
 import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
 import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriverPage;
 import org.openqa.selenium.By;

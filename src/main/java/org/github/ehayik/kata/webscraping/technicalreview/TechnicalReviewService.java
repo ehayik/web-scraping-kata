@@ -4,6 +4,7 @@ import io.github.resilience4j.retry.annotation.Retry;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -13,7 +14,7 @@ public class TechnicalReviewService {
 
     private final TechnicalReviewPageFactory technicalReviewPageFactory;
 
-    @Retry(name = "get-technical-review", fallbackMethod = "fallbackToEmpty")
+    @Retry(name = "get-technical-review", fallbackMethod = "fallbackToThrowException")
     public Optional<TechnicalReview> getTechnicalReview(String licensePlate) {
         try (TechnicalReviewPage page = technicalReviewPageFactory.create()) {
             return page.goTo()
@@ -27,8 +28,8 @@ public class TechnicalReviewService {
     }
 
     @SuppressWarnings("unused")
-    private Optional<TechnicalReview> fallbackToEmpty(String licensePlate, IllegalStateException ex) {
-        log.info("Failed to get {} technical review information after 5 reties.", licensePlate, ex);
-        return Optional.empty();
+    private Optional<TechnicalReview> fallbackToThrowException(String licensePlate, IllegalStateException ex) {
+        var errorMessage = "Failed to get %s technical review information after 5 reties.".formatted(licensePlate);
+        throw new WebPageIllegalStateException(errorMessage, ex);
     }
 }

@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscraping.infrastructure;
+package org.github.ehayik.kata.webscraping.commons;
 
 import java.util.Objects;
 

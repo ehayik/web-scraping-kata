@@ -1,7 +1,10 @@
 package org.github.ehayik.kata.webscraping.technicalreview;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +22,7 @@ public class TechnicalReviewForm {
     @FindBy(css = "a[class='submit']")
     private WebElement submitButton;
 
+    private String licensePlate;
     private final WebDriver webDriver;
     private final CaptchaWidget captchaWidget;
 
@@ -31,19 +35,31 @@ public class TechnicalReviewForm {
     public TechnicalReviewForm enterLicensePlate(String licensePlate) {
         log.info("Entering license plate {}", licensePlate);
         licensePlateInput.sendKeys(licensePlate);
+        this.licensePlate = licensePlate;
         return this;
     }
 
     public TechnicalReviewForm enterSecurityCode() {
         var securityCode = captchaWidget.getSecurityCode();
+
+        if (isBlank(securityCode) || securityCode.length() < 4) {
+            throw new WebPageIllegalStateException("Security code '%s' is not valid.".formatted(securityCode));
+        }
+
         log.info("Entering security code {}.", securityCode);
         securityCodeInput.sendKeys(securityCode);
         return this;
     }
 
     public TechnicalReviewResultPage submit() {
+
+        if (isBlank(licensePlate)) {
+            throw new IllegalArgumentException("License plate cannot be null or blank");
+        }
+
         log.info("Submitting form");
         submitButton.click();
-        return new TechnicalReviewResultPage(webDriver);
+
+        return new TechnicalReviewResultPage(licensePlate, webDriver);
     }
 }

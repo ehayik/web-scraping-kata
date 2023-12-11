@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Map;
 import lombok.Data;
+import org.github.ehayik.kata.webscraping.commons.PageConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data

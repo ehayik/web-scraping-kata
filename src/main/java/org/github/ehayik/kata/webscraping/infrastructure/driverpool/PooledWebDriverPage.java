@@ -4,7 +4,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 import lombok.Getter;
 import lombok.NonNull;
-import org.github.ehayik.kata.webscraping.infrastructure.PageConfig;
+import org.github.ehayik.kata.webscraping.commons.PageConfig;
 import org.openqa.selenium.support.PageFactory;
 
 /**
