@@ -12,10 +12,10 @@ public class TechnicalReviewController {
 
     private final TechnicalReviewService technicalReviewService;
 
-    @GetMapping("/technical-review/{licensePlate}")
-    public ResponseEntity<TechnicalReview> getTechnicalReview(@PathVariable String licensePlate) {
+    @GetMapping("/technical-review/{licensePlateNumber}")
+    public ResponseEntity<TechnicalReview> getTechnicalReview(@PathVariable String licensePlateNumber) {
         return technicalReviewService
-                .getTechnicalReview(licensePlate)
+                .getTechnicalReview(licensePlateNumber)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

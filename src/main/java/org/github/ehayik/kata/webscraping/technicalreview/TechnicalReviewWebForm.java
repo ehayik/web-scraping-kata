@@ -1,17 +1,16 @@
 package org.github.ehayik.kata.webscraping.technicalreview;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
-
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
-import org.openqa.selenium.WebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 @Slf4j
-public class TechnicalReviewForm {
+public class TechnicalReviewWebForm {
 
     @FindBy(css = "input[placeholder='License plate']")
     private WebElement licensePlateInput;
@@ -23,24 +22,26 @@ public class TechnicalReviewForm {
     private WebElement submitButton;
 
     private String licensePlate;
-    private final WebDriver webDriver;
+    private String securityCode;
+
+    private final PooledWebDriver pooledWebDriver;
     private final CaptchaWidget captchaWidget;
 
-    public TechnicalReviewForm(@NonNull WebDriver webDriver, @NonNull CaptchaWidget captchaWidget) {
-        this.webDriver = webDriver;
+    public TechnicalReviewWebForm(PooledWebDriver pooledWebDriver, CaptchaWidget captchaWidget) {
+        this.pooledWebDriver = pooledWebDriver;
         this.captchaWidget = captchaWidget;
-        PageFactory.initElements(webDriver, this);
+        PageFactory.initElements(pooledWebDriver.unwrap(), this);
     }
 
-    public TechnicalReviewForm enterLicensePlate(String licensePlate) {
+    public TechnicalReviewWebForm enterLicensePlate(String licensePlate) {
         log.info("Entering license plate {}", licensePlate);
         licensePlateInput.sendKeys(licensePlate);
         this.licensePlate = licensePlate;
         return this;
     }
 
-    public TechnicalReviewForm enterSecurityCode() {
-        var securityCode = captchaWidget.getSecurityCode();
+    public TechnicalReviewWebForm enterSecurityCode() {
+        securityCode = captchaWidget.getSecurityCode();
 
         if (isBlank(securityCode) || securityCode.length() < 4) {
             throw new WebPageIllegalStateException("Security code '%s' is not valid.".formatted(securityCode));
@@ -57,9 +58,16 @@ public class TechnicalReviewForm {
             throw new IllegalArgumentException("License plate cannot be null or blank");
         }
 
-        log.info("Submitting form");
+        if (isBlank(securityCode)) {
+            throw new IllegalArgumentException("Security code cannot be null or blank");
+        }
+
+        log.info(
+                "Submitting technical review web form, licence plate: {}, security code: {}.",
+                licensePlate,
+                securityCode);
         submitButton.click();
 
-        return new TechnicalReviewResultPage(licensePlate, webDriver);
+        return new TechnicalReviewResultPage(licensePlate, pooledWebDriver);
     }
 }

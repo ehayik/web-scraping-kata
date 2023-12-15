@@ -19,6 +19,9 @@ RUN GECKODRIVER_VERSION=`curl -Ls -o /dev/null -w %{url_effective} https://githu
     chmod 755 /opt/geckodriver-"$GECKODRIVER_VERSION" && \
     ln -fs /opt/geckodriver-"$GECKODRIVER_VERSION"/usr/bin/geckodriver
 
+# Install Tesseract OCR
+RUN apt install -y tesseract-ocr libtesseract-dev
+
 ## Clean up
 RUN apt autoremove -y && apt autoclean -y && \
     rm -rf /var/lib/apt/lists/*

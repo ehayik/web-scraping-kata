@@ -8,13 +8,17 @@ import lombok.SneakyThrows;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import org.github.ehayik.kata.webscraping.infrastructure.WebScrapingProperties;
+import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
 import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PoolingWebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class TechnicalReviewPageFactory {
+
+    private static final String LANGUAGE = "eng";
+    private static final String WHITELIST_VAR = "tessedit_char_whitelist";
+    private static final String WHITELISTED_CHARS = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     private final PoolingWebDriverManager driverPool;
     private final WebScrapingProperties webScrapingProperties;
@@ -22,13 +26,13 @@ public class TechnicalReviewPageFactory {
     public TechnicalReviewPage create() {
         var pageConfig = webScrapingProperties.getPage("technical-review");
         var pooledWebDriver = driverPool.getPooledWebDriver();
-        var form = createTechnicalReviewForm(pooledWebDriver.unwrap());
-        return new TechnicalReviewPage(pageConfig, pooledWebDriver, form);
+        var webForm = createTechnicalReviewForm(pooledWebDriver);
+        return new TechnicalReviewPage(pageConfig, pooledWebDriver, webForm);
     }
 
-    private static TechnicalReviewForm createTechnicalReviewForm(WebDriver webDriver) {
-        var captchaWidget = new CaptchaWidget(webDriver, createTesseract());
-        return new TechnicalReviewForm(webDriver, captchaWidget);
+    private static TechnicalReviewWebForm createTechnicalReviewForm(PooledWebDriver pooledWebDriver) {
+        var captchaWidget = new CaptchaWidget(pooledWebDriver.unwrap(), createTesseract());
+        return new TechnicalReviewWebForm(pooledWebDriver, captchaWidget);
     }
 
     @SneakyThrows
@@ -37,9 +41,8 @@ public class TechnicalReviewPageFactory {
         var dataPath = Paths.get(trainedDataURL.toURI()).getParent().toString();
         var tesseract = new Tesseract();
         tesseract.setDatapath(dataPath);
-        tesseract.setLanguage("eng");
-        tesseract.setVariable(
-                "tessedit_char_whitelist", "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        tesseract.setLanguage(LANGUAGE);
+        tesseract.setVariable(WHITELIST_VAR, WHITELISTED_CHARS);
         return tesseract;
     }
 }

@@ -17,11 +17,11 @@ public class TechnicalReviewPage extends PooledWebDriverPage {
     @FindBy(css = "div[class='langSwitch'] a")
     private List<WebElement> languages;
 
-    private final TechnicalReviewForm form;
+    private final TechnicalReviewWebForm webForm;
 
-    public TechnicalReviewPage(PageConfig pageConfig, PooledWebDriver pooledWebDriver, TechnicalReviewForm form) {
+    public TechnicalReviewPage(PageConfig pageConfig, PooledWebDriver pooledWebDriver, TechnicalReviewWebForm webForm) {
         super(pageConfig, pooledWebDriver);
-        this.form = form;
+        this.webForm = webForm;
     }
 
     @Override
@@ -34,13 +34,13 @@ public class TechnicalReviewPage extends PooledWebDriverPage {
         getPooledWebDriver().waitUntil(ofSeconds(5), presenceOfElementLocated(By.cssSelector(".submit")));
     }
 
-    public TechnicalReviewForm switchLanguageToEnglish() {
+    public TechnicalReviewWebForm switchLanguageToEnglish() {
         languages.stream()
                 .filter(anchor -> "English".equals(anchor.getText()))
                 .findFirst()
                 .ifPresentOrElse(WebElement::click, () -> {
                     throw new IllegalStateException("Could not change language to English. WebElement is not found.");
                 });
-        return form;
+        return webForm;
     }
 }

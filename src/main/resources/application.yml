@@ -25,7 +25,7 @@ resilience4j:
      instances:
        get-technical-review:
          max-attempts: 5
-         wait-duration: 2s
+         wait-duration: 500ms
          retry-exceptions:
            - org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException
 
