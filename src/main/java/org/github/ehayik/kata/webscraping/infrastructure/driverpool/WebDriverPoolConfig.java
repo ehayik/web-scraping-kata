@@ -1,5 +1,7 @@
 package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
 
+import static org.springframework.jmx.support.RegistrationPolicy.IGNORE_EXISTING;
+
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
@@ -7,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableMBeanExport;
-
-import static org.springframework.jmx.support.RegistrationPolicy.IGNORE_EXISTING;
 
 @Configuration
 @EnableMBeanExport(registration = IGNORE_EXISTING)
@@ -20,7 +20,8 @@ class WebDriverPoolConfig {
     }
 
     @Bean
-    GenericObjectPool<WebDriver> webDriverPool(WebDriverPoolProperties properties, PooledObjectFactory<WebDriver> driverFactory) {
+    GenericObjectPool<WebDriver> webDriverPool(
+            WebDriverPoolProperties properties, PooledObjectFactory<WebDriver> driverFactory) {
         var poolConfig = new GenericObjectPoolConfig<WebDriver>();
         poolConfig.setMaxTotal(properties.getMaxTotal());
         poolConfig.setMinIdle(properties.getMinIdle());
@@ -29,7 +30,8 @@ class WebDriverPoolConfig {
     }
 
     @Bean
-    PooledObjectFactory<WebDriver> pooledObjectFactory(WebDriverProperties properties, WebDriverFactory webDriverFactory) {
+    PooledObjectFactory<WebDriver> pooledObjectFactory(
+            WebDriverProperties properties, WebDriverFactory webDriverFactory) {
         return new PooledWebDriverFactory(webDriverFactory, properties);
     }
 
@@ -41,4 +43,3 @@ class WebDriverPoolConfig {
         };
     }
 }
-

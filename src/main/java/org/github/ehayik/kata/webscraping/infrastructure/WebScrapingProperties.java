@@ -1,11 +1,11 @@
 package org.github.ehayik.kata.webscraping.infrastructure;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Map;
-
-import static java.util.Objects.requireNonNull;
+import lombok.Data;
+import org.github.ehayik.kata.webscraping.commons.PageConfig;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties("web-scraping")
@@ -16,5 +16,4 @@ public class WebScrapingProperties {
     public PageConfig getPage(String pageName) {
         return requireNonNull(page.get(pageName), "Configuration for page %s is not found".formatted(pageName));
     }
-
 }

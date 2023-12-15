@@ -21,6 +21,8 @@ This project illustrates Web scraping challenges and concepts, showing how to:
 - Manage WebDriver instances in a multi-threaded environment.
 - Implement WebDriver pooling manager using Apache Common pool.
 - Implement Page Object Pattern.
+- [Retry with Spring Boot and Resilience4j](https://reflectoring.io/retry-with-springboot-resilience4j/)
+- How to pass captcha challenge using [Tesseract and Tess4J](https://www.baeldung.com/java-ocr-tesseract)
 
 ## Technologies Used
 
@@ -54,6 +56,7 @@ Feel free to explore the project and suggest any improvements.
 - Maven
 - Docker
 - Chrome or Firefox browser, if running locally
+- [Tesseract](https://tesseract-ocr.github.io/tessdoc/Installation.html), if running locally
 
 ### Installing
 
@@ -111,4 +114,22 @@ Example response:
       "price": "£63.00"
    }
 ]
+```
+### GET  technical-review/{licensePlateNumber}
+
+Returns technical review information for vehicles registered in Bulgaria. 
+
+Example request:
+
+```bash
+curl -X GET http://localhost:8080/technical-review/E8066KK
+```
+
+Example response:
+
+```json
+{
+  "licensePlate": "E8066KK",
+  "validTo": "2024-11-11"
+}
 ```

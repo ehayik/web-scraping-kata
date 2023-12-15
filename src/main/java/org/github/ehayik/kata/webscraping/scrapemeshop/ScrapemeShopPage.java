@@ -1,16 +1,15 @@
 package org.github.ehayik.kata.webscraping.scrapemeshop;
 
-import org.github.ehayik.kata.webscraping.infrastructure.PageConfig;
+import static java.time.Duration.ofSeconds;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
+import java.util.List;
+import org.github.ehayik.kata.webscraping.commons.PageConfig;
 import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
 import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriverPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
-
-import static java.time.Duration.ofSeconds;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 // page_url = https://scrapeme.live/shop/
 public class ScrapemeShopPage extends PooledWebDriverPage {

@@ -23,6 +23,9 @@
         <selenium-java.version>4.15.0</selenium-java.version>
         <commons-pool2.version>2.12.0</commons-pool2.version>
         <guava.version>32.1.2-jre</guava.version>
+        <tess4j.version>5.9.0</tess4j.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <resilience4j-spring-boot3.version>2.1.0</resilience4j-spring-boot3.version>
     </properties>
 
     <dependencies>
@@ -46,8 +49,37 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>${tess4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>${resilience4j-spring-boot3.version}</version>
         </dependency>
 
         <dependency>

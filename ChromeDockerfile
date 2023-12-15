@@ -24,6 +24,9 @@ RUN apt-get update && \
 RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/119.0.6045.105/linux64/chromedriver-linux64.zip
 RUN unzip /tmp/chromedriver.zip chromedriver-linux64/chromedriver -d /usr/local/bin/
 
+# Install Tesseract OCR
+RUN apt install -y tesseract-ocr libtesseract-dev
+
 # Clean up
 RUN apt autoremove -y && apt autoclean -y && \
     rm -rf /var/lib/apt/lists/*
