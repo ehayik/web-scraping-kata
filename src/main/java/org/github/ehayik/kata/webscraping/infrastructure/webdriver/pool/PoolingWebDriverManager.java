@@ -1,8 +1,10 @@
-package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.openqa.selenium.WebDriver;
+
+import java.time.Duration;
 
 /**
  * Manages a pool of WebDriver instances using Apache Commons Pool library.
@@ -14,6 +16,7 @@ import org.openqa.selenium.WebDriver;
 @RequiredArgsConstructor
 public class PoolingWebDriverManager {
 
+    private final Duration timeout;
     private final GenericObjectPool<WebDriver> webDriverPool;
 
     /**
@@ -23,9 +26,9 @@ public class PoolingWebDriverManager {
      */
     public PooledWebDriver getPooledWebDriver() {
         try {
-            return new PooledWebDriver(this);
+            return new PooledWebDriver(timeout, this);
         } catch (Exception ex) {
-            throw new RuntimeException("Could not borrow WebDriver from the pool", ex);
+            throw new WebDriverPoolException("Could not borrow WebDriver from the pool", ex);
         }
     }
 
@@ -38,7 +41,7 @@ public class PoolingWebDriverManager {
         try {
             return webDriverPool.borrowObject();
         } catch (Exception ex) {
-            throw new RuntimeException("Could not borrow WebDriver from the pool", ex);
+            throw new WebDriverPoolException("Could not borrow WebDriver from the pool", ex);
         }
     }
 

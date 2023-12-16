@@ -2,7 +2,7 @@ package org.github.ehayik.kata.webscraping.scrapemeshop;
 
 import lombok.RequiredArgsConstructor;
 import org.github.ehayik.kata.webscraping.infrastructure.WebScrapingProperties;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PoolingWebDriverManager;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PoolingWebDriverManager;
 import org.springframework.stereotype.Component;
 
 @Component

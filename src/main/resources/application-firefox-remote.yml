@@ -7,5 +7,7 @@ spring:
 
 web-driver:
   browser: FIREFOX
-  remote-enabled: true
-  remote-address: http://localhost:4444/wd/hub
+  remote:
+    enabled: true
+    address: http://localhost:4444/wd/hub
+    tracing-enabled: true

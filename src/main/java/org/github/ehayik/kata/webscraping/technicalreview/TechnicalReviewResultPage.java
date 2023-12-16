@@ -2,14 +2,13 @@ package org.github.ehayik.kata.webscraping.technicalreview;
 
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriver;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -79,7 +78,7 @@ public class TechnicalReviewResultPage {
         try {
             Function<WebDriver, Boolean> isTrue =
                     x -> validDataFound.isDisplayed() || expiredDataFound.isDisplayed() || dataNotFound.isDisplayed();
-            pooledWebDriver.waitUntil(Duration.ofSeconds(1), isTrue);
+            pooledWebDriver.waitUntil(isTrue);
         } catch (TimeoutException ex) {
             throw new WebPageIllegalStateException(
                     "%s technical review data is not loaded. Please check whether form inputs valid."

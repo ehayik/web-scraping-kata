@@ -1,4 +1,4 @@
-package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
