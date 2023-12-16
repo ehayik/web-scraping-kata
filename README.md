@@ -24,6 +24,8 @@ This project illustrates Web scraping challenges and concepts, showing how to:
 - [Retry with Spring Boot and Resilience4j](https://reflectoring.io/retry-with-springboot-resilience4j/)
 - How to pass captcha challenge using [Tesseract and Tess4J](https://www.baeldung.com/java-ocr-tesseract)
 
+![Warning](./assets/images/web-scraping-warning.jpg)
+
 ## Technologies Used
 
 This project uses a number of technologies and libraries:
