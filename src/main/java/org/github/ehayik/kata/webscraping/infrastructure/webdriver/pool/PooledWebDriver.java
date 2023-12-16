@@ -1,12 +1,12 @@
-package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
-import java.time.Duration;
-import java.util.function.Function;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.function.Function;
 
 /**
  * Represents a Pooled WebDriver instance.
@@ -21,21 +21,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @RequiredArgsConstructor
 public class PooledWebDriver implements AutoCloseable {
 
-    @NonNull
+    private final Duration timeout;
     private final WebDriver delegate;
-
-    @NonNull
     private final PoolingWebDriverManager driverPool;
 
     /**
-     * Creates a new instance of {@code PooledWebDriver} by borrowing a driver from the specified {@code PoolingWebDriverManager}.
+     * Constructs a new PooledWebDriver object with the specified timeout and driver pool.
      *
-     * @apiNote This constructor is used internally by the library to create a pooled web driver.
-     *
-     * @param driverPool the {@code PoolingWebDriverManager} from which to borrow a driver
+     * @param timeout the timeout duration for waiting operations
+     * @param driverPool the pooling web driver manager
      */
-    PooledWebDriver(PoolingWebDriverManager driverPool) {
-        this(driverPool.borrowDriver(), driverPool);
+    PooledWebDriver(Duration timeout, PoolingWebDriverManager driverPool) {
+        this(timeout, driverPool.borrowDriver(), driverPool);
     }
 
     /**
@@ -62,8 +59,8 @@ public class PooledWebDriver implements AutoCloseable {
         delegate.get(url);
     }
 
-    public <V> V waitUntil(Duration duration, Function<WebDriver, V> isTrue) {
-        return new WebDriverWait(delegate, duration).until(isTrue);
+    public <V> V waitUntil(Function<WebDriver, V> isTrue) {
+        return new WebDriverWait(delegate, timeout).until(isTrue);
     }
 
     /**

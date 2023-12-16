@@ -8,8 +8,8 @@ import lombok.SneakyThrows;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import org.github.ehayik.kata.webscraping.infrastructure.WebScrapingProperties;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PoolingWebDriverManager;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PoolingWebDriverManager;
 import org.springframework.stereotype.Component;
 
 @Component

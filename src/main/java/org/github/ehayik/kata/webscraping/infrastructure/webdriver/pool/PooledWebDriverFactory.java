@@ -1,10 +1,11 @@
-package org.github.ehayik.kata.webscraping.infrastructure.driverpool;
+package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -25,15 +26,9 @@ import org.openqa.selenium.WebDriver;
 class PooledWebDriverFactory extends BasePooledObjectFactory<WebDriver> {
 
     private final WebDriverFactory delegate;
-    private final WebDriverProperties properties;
 
     @Override
     public WebDriver create() {
-
-        if (properties.isRemoteEnabled()) {
-            return delegate.create(properties.getRemoteAddress());
-        }
-
         return delegate.create();
     }
 

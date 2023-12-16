@@ -1,13 +1,13 @@
 package org.github.ehayik.kata.webscraping.technicalreview;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Slf4j
 public class TechnicalReviewWebForm {

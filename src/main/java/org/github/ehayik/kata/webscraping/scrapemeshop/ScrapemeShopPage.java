@@ -1,15 +1,15 @@
 package org.github.ehayik.kata.webscraping.scrapemeshop;
 
-import static java.time.Duration.ofSeconds;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-
-import java.util.List;
 import org.github.ehayik.kata.webscraping.commons.PageConfig;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriver;
-import org.github.ehayik.kata.webscraping.infrastructure.driverpool.PooledWebDriverPage;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriver;
+import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriverPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 // page_url = https://scrapeme.live/shop/
 public class ScrapemeShopPage extends PooledWebDriverPage {
@@ -28,7 +28,7 @@ public class ScrapemeShopPage extends PooledWebDriverPage {
 
     @Override
     protected void waitUntilPageIsLoaded() {
-        getPooledWebDriver().waitUntil(ofSeconds(5), presenceOfElementLocated(By.cssSelector("ul.products")));
+        getPooledWebDriver().waitUntil(presenceOfElementLocated(By.cssSelector("ul.products")));
     }
 
     public List<Product> getProducts() {
