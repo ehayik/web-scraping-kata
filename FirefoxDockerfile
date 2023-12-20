@@ -1,9 +1,9 @@
-FROM eclipse-temurin:17 AS builder
+FROM eclipse-temurin:21 AS builder
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} web-scraping-kata-0.0.1.jar
 RUN java -Djarmode=layertools -jar web-scraping-kata-0.0.1.jar extract
 
-FROM eclipse-temurin:17-focal
+FROM eclipse-temurin:21
 LABEL authors="github.com/ehayik"
 
 # Install necessary packages

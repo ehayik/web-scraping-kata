@@ -1,9 +1,9 @@
 package org.github.ehayik.kata.webscraping.infrastructure.webdriver.firefox;
 
+import static lombok.AccessLevel.PRIVATE;
+
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
-import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 class FirefoxOptionsFactory {

@@ -53,7 +53,7 @@ Feel free to explore the project and suggest any improvements.
 
 ### Prerequisites
 
-- Java JDK version 17.
+- Java JDK version 21.
 - An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
 - Maven
 - Docker

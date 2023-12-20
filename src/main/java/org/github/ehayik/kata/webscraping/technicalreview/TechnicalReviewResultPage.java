@@ -1,5 +1,9 @@
 package org.github.ehayik.kata.webscraping.technicalreview;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import java.util.function.Function;
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
 import org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool.PooledWebDriver;
@@ -8,11 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import java.util.function.Function;
 
 @Slf4j
 public class TechnicalReviewResultPage {

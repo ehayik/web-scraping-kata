@@ -1,12 +1,11 @@
 package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
+import java.time.Duration;
+import java.util.function.Function;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.function.Function;
 
 /**
  * Represents a Pooled WebDriver instance.

@@ -1,12 +1,11 @@
 package org.github.ehayik.kata.webscraping.infrastructure.webdriver;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import static org.github.ehayik.kata.webscraping.infrastructure.webdriver.WebDriverProperties.Browser.CHROME;
 
 import java.net.URL;
 import java.time.Duration;
-
-import static org.github.ehayik.kata.webscraping.infrastructure.webdriver.WebDriverProperties.Browser.CHROME;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties("web-driver")

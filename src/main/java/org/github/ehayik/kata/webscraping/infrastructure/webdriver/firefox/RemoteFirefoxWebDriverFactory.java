@@ -1,13 +1,12 @@
 package org.github.ehayik.kata.webscraping.infrastructure.webdriver.firefox;
 
+import java.net.URL;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.infrastructure.webdriver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.URL;
 
 /**
  * A factory class for creating Firefox{@link RemoteWebDriver} instances using

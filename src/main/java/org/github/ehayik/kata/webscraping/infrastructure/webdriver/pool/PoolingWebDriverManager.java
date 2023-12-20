@@ -1,10 +1,9 @@
 package org.github.ehayik.kata.webscraping.infrastructure.webdriver.pool;
 
+import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.openqa.selenium.WebDriver;
-
-import java.time.Duration;
 
 /**
  * Manages a pool of WebDriver instances using Apache Commons Pool library.
