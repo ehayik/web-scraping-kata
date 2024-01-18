@@ -1,5 +1,9 @@
 
 spring:
+  cache:
+    cache-names: tech-review
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=6m
   threads:
     virtual:
       enabled: true
