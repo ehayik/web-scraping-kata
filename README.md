@@ -53,8 +53,8 @@ Feel free to explore the project and suggest any improvements.
 
 ### Prerequisites
 
-- Java JDK version 21.
-- An IDE that supports Java and Spring MVC development, such as IntelliJ IDEA
+- Java JDK version 21
+- An IDE that supports Java and Spring Boot development, such as IntelliJ IDEA
 - Maven
 - Docker
 - Chrome or Firefox browser, if running locally
