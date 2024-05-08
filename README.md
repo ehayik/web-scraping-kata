@@ -34,7 +34,7 @@ This project uses a number of technologies and libraries:
 
 - **Selenium**: A web testing library used to automate browser activities.
 
-- **Spring Boot**: An open source Java-based framework used to create a Micro Service. It is developed by Pivotal Team.
+- **Spring Boot**: It makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
 
 - **Spring MVC**: A Java framework that is used to build web applications. It follows the Model-View-Controller design pattern.
 

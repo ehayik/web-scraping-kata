@@ -1,8 +1,5 @@
 package org.github.ehayik.kata.webscraping.infrastructure;
 
-import static org.springframework.http.HttpHeaders.RETRY_AFTER;
-import static org.springframework.http.HttpStatus.SERVICE_UNAVAILABLE;
-
 import lombok.extern.slf4j.Slf4j;
 import org.github.ehayik.kata.webscraping.commons.WebPageIllegalStateException;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -12,6 +9,9 @@ import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import static org.springframework.http.HttpHeaders.RETRY_AFTER;
+import static org.springframework.http.HttpStatus.SERVICE_UNAVAILABLE;
 
 @Slf4j
 @RestControllerAdvice
